@@ -19,12 +19,32 @@
 
 
 module Sale
+  module FormBuilder
+    class << self # with this we no lnger call self.call
+      def call(params)
+        subtotal = params[:subtotal]
+        state_name = params[:state_name]
 
-  def self.call(params)
-    puts "Params in class: #{params}"
+        tax_amount = subtotal * self.tax_rate(state_name)
+        subtotal + tax_amount
+      end
+
+      private
+
+      def tax_rate(state)
+        if state == "AZ"
+          0.065
+        elsif state == "CA"
+          0.089
+        end
+      end
+    end
   end
-
 end
 
+date_form = {
+  subtotal: 5.5,
+  state_name: "AZ"
+}
 
-Sale.call("hello from the module")
+p Sale::FormBuilder.call(date_form)
