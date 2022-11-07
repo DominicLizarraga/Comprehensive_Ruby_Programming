@@ -13,6 +13,10 @@ class ApiConnector
     puts @description
     puts @url
   end
+
+  def api_logger
+    puts "API connection starting..."
+  end
 end
 
 
@@ -27,13 +31,17 @@ class PhoneConnector < ApiConnector
   def sending_phone_call
     puts "sending phone call...."
   end
+
+  def api_logger
+    puts "Phone call API connection starting..."
+  end
 end
 
 
 
 api = ApiConnector.new(title: "My title", description: "my cool description", url: "yahoo.com")
 
-api.testing_initializers
+# api.testing_initializers
 
 # My title
 # my cool description
@@ -46,6 +54,8 @@ api.testing_initializers
 phone = PhoneConnector.new(title: "My title from Phone", description: "my cool description from Phone", url: "yahoo.com")
 
 phone.sending_phone_call
+phone.api_logger # this methods overrides the one that is set in the parent class, this is polymophism
+
 
 
 # My title from Phone
