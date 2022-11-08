@@ -10,6 +10,9 @@ File.open("~/Downloads/ruby_Jordan_Hudgens/teams.txt", 'w+') { |f| f.write("san 
 
 # second way of doing it
 
-# file_to_save = File.new("downloads/ruby_Jordan_Hudgens/other_teams.txt", 'w+')
-# file_to_save.puts("yankees, boston")
-# file_to_save.close
+file_to_save = File.new("downloads/ruby_Jordan_Hudgens/other_teams.txt", 'w+')
+file_to_save.puts("yankees, boston")
+file_to_save.close
+
+
+
